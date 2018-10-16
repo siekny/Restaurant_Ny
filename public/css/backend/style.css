@@ -1,0 +1,49 @@
+.nav-tabs {
+    border-bottom: 1px solid #367fa9 !important;
+}
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+    color: #fff !important;
+    background-color: #367fa9 !important;
+    border: 1px solid #5284a1 !important;
+}
+.nav-tabs>li>a {
+    font-weight: 600 !important;
+}
+.nav-tabs>li>a:hover {
+    border-color: #367fa9 #367fa9 #ecf0f5 !important;
+}
+.nav>li>a:focus, .nav>li>a:hover {
+    background-color: transparent !important;
+}
+.content-header {
+	margin-top: 50px !important;
+}
+.content-header > h1 {
+    margin-bottom: 20px !important;
+}
+.skin-blue .wrapper, .skin-blue .main-sidebar, .skin-blue .left-side {
+    z-index: -1 !important;
+}
+.form-horizontal {
+    width: 80% !important;
+    margin: 20px auto 0 !important;
+    box-shadow: 3px 3px 5px 0px #d5d9da !important;
+    border: 1px solid #d5d9da !important;
+    padding: 30px 0 20px !important;
+}
+.dataTables_wrapper {
+    box-shadow: 3px 3px 5px 0px #d5d9da !important;
+    width: 95%;
+    margin: 30px auto 0;
+    padding: 20px !important;
+    border: 1px solid #d5d9da !important;
+}
+.edit, .delete {
+    color: #fff !important;
+}
+.swal-footer {
+    margin-top: 0 !important;
+}
+.swal-text {
+    font-size: 25px !important;
+}
