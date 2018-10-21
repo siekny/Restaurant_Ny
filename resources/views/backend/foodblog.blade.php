@@ -22,7 +22,7 @@
 					<div class="form-group">
 					  	<label class="col-md-4 control-label">BLOG NAME</label>
 					  	<div class="col-md-6">
-					    	<input id="blogName" placeholder="Blog Name" class="form-control input-md" required="" type="text">
+					    	<input id="blogName" placeholder="Blog Name" name="blogName" class="form-control input-md" required="" type="text">
 					  	</div>
 					</div>
 
@@ -30,7 +30,7 @@
 					<div class="form-group">
 					  	<label class="col-md-4 control-label">ADD DATE</label>  
 					  	<div class="col-md-6">
-					  		<input id="addDate" placeholder="ADD DATE" class="form-control input-md" required="" type="text" onfocus="(this.type='date')" onchange="(this.type='text')">
+					  		<input id="addDate" name="addDate" placeholder="ADD DATE" class="form-control input-md" required="" type="text" onfocus="(this.type='date')" onchange="(this.type='text')">
 					  	</div>
 					</div>
 
@@ -38,7 +38,7 @@
 					<div class="form-group">
 			  			<label class="col-md-4 control-label">ADD BY</label>  
 			  			<div class="col-md-6">
-			  				<input id="addBy" placeholder="ADD BY" class="form-control input-md" required="" type="text">
+			  				<input id="addBy" name="addBy" placeholder="ADD BY" class="form-control input-md" required="" type="text">
 			    
 			  			</div>
 					</div>
@@ -47,7 +47,7 @@
 					<div class="form-group">
 			  			<label class="col-md-4 control-label">DESCRIPTION</label>  
 			  			<div class="col-md-6">
-			  				<textarea id="description" class="form-control input-md" placeholder="Description" required="" rows="5" style="resize: none;"></textarea>
+			  				<textarea id="description" name="description" class="form-control input-md" placeholder="Description" required="" rows="5" style="resize: none;"></textarea>
 			  				
 			  			</div>
 					</div>
@@ -74,8 +74,9 @@
 		            </tr>
 		        </thead>
 		        <tbody id="foodBlog-info">
-		        	@foreach($foodblogs as $foodblog)
 		        	<?php $i=1; ?>
+		        	@foreach($foodblogs as $foodblog)
+		        	
 		            <tr id="{{ $foodblog->id }}">
 		            	<td>{{ $i++ }}</td>
 		                <td>{{ $foodblog->blogName }}</td>
@@ -83,7 +84,7 @@
 		                <td>{{ $foodblog->addBy }}</td>
 		                <td>{{ $foodblog->description }}</td>
 		                <td>
-		                	<a class="btn btn-success btn-sm edit" id="id_edit" data-id="{{ $foodblog->id }}"><span class="glyphicon glyphicon-edit"></span></a>
+		                	<a class="btn btn-success btn-sm edit" data-id="{{ $foodblog->id }}" title="{{ $foodblog->id }}"><span class="glyphicon glyphicon-edit"></span></a>
 		                	<a class="btn btn-danger btn-sm delete" data-id="{{ $foodblog->id }}" title="{{ $foodblog->id }}"><span class="glyphicon glyphicon-trash"></span></a>
 		                </td>
 		            </tr>
@@ -121,6 +122,50 @@
     </div>
 </div>
 <!-- end pop up of deleting -->
+
+<!-- pop up of editing -->
+<div class="modal fade" tabindex="-1" id="edit" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            	<h4>Updating</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="center">
+                	<input type="text" id="id_edit" class="form-control" name="">
+                </div>
+                <div class="form-group">
+                	<label>Picture</label>
+                	<input type="file" name="picture" id="picture" class="form-control">
+                </div>
+                <div class="form-group">
+                	<label>BlogName</label>
+                	<input type="text" name="blogName" id="blogName" class="form-control" placeholder="Blog Name">
+                </div>
+                <div class="form-group">
+                	<label>Add Date</label>
+                	<input type="text" name="blogName" id="blogName" class="form-control" placeholder="Blog Name">
+                </div>
+                <div class="form-group">
+                	<label>Add By</label>
+                	<input type="text" name="addBy" id="addBy" class="form-control" placeholder="Add By">
+                </div>
+                <div class="form-group">
+                	<label>Description</label>
+                	<textarea id="description" class="form-control" rows="5" placeholder="Description"></textarea>
+                </div>
+                
+            </div>
+            <div class="modal-footer">
+            	<button type="submit" class="btn btn-danger" id="btnDelete">Delete</button>
+                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end pop up of editing -->
+
 <script type="text/javascript">
 	$(document).ready(function() {
         $('#example').DataTable();
@@ -146,43 +191,39 @@
 		// add script
 		$('#btnSubmit').on('click', function(e) {
 			e.preventDefault();
-			var picture = $('#picture').val();
-			var blogName = $('#blogName').val();
-			var addDate = $('#addDate').val();
-			var addBy = $('#addBy').val();
-			var description = $('#description').val();
+			// var picture = $('#picture').val();
+			// var blogName = $('#blogName').val();
+			// var addDate = $('#addDate').val();
+			// var addBy = $('#addBy').val();
+			// var description = $('#description').val();
 			
 
 			$.ajax({
 				type: 'get',
 				url: '{{route("foodblogAdd")}}',
-				data: {
-					picture : picture,
-					blogName : blogName,
-					addDate : addDate,
-					addBy : addBy,
-					description : description
-				},
+				data: new FormData(this),
+		        dataType:'JSON',
+		        contentType: false,
+		        cache: false,
+		        processData: false,
+				
 				success: function(data) {
 					console.log(data)
-					// var rowCount = $('#example tr').length;
-
-     //    			var tr = $('<tr/>');
-					// tr.append($('<td/>', {
-					// 	text : data.blogName
-					// })).append($('<td/>', {
-					// 	text : data.addDate
-					// }))append($('<td/>', {
-					// 	text : data.addBy
-					// })).append($('<td/>', {
-					// 	text : data.description
-					// })).append($('<td/>', {
-
-					// 	html : '<a class="btn btn-success btn-sm edit" id="id_edit" data-id="{{ $foodblog->id }}"><span class="glyphicon glyphicon-edit"></span></a><a class="btn btn-danger btn-sm delete" data-id="{{ $foodblog->id }}" title="{{ $foodblog->id }}"><span class="glyphicon glyphicon-trash"></span></a>'
-					// }))
-						
-					// $('#foodBlog-info').append(tr);
-				}
+					swal({
+			            text: "The data have been added",
+			            icon: "success",
+			            button: false,
+			            timer: 3000
+			          });
+				
+				},
+				error: function(data){
+		          	swal({
+		            	text: "The data Can't added",
+		            	icon: "error",
+		            	button: "Close"
+		          	});
+		        }
 			});
 		});
 
@@ -196,15 +237,23 @@
         	$.ajax({
         		type: 'get',
         		url: '{{route("foodblogDelete")}}',
+        		dataType: 'json',
         		data: {id : id},
         		success: function (data) {
         			$('#delete').modal('hide');
-        			$('tr#' +id).remove();
+        			$('tr#'+id).remove();
+        			
         			swal("", "Delete Successfully !", "success")
         		}
         	});
         	
         })
+
+        // edit script
+        $('.edit').click(function(){
+            $('#edit').modal('show');
+            $('#id_edit').val($(this).attr('data-id'));
+        });
 	});
 </script>
 

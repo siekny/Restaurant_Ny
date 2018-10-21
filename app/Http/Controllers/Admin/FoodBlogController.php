@@ -20,29 +20,34 @@ class FoodBlogController extends Controller
     public function store(Request $request)
     {
         $foodblog = new FoodBlog;
-        $foodblog->blogName = $request->blogName;
-        $foodblog->addDate = $request->addDate;
-        $foodblog->addBy = $request->addBy;
-        $foodblog->description = $request->description;
-        $foodblog->picture = $request->file('picture')->getClientOriginalName();
-        var_dump($foodblog->picture);
 
-        // $image = $request->file('picture');
-        // $new_name = $request->picture->getClientOriginalName();
-        // $image->move(public_path('uploads/picture'), $new_name);
-        // $foodblog->picture = $new_name;
+        $validator = Validator::make($request->all(), [
+        'blogName' => 'required',
+        'addDate' => 'required',
+        'addBy' => 'required',
+        'picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+      ]);
+
+        if (!empty($request->picture)) {
+            $filename = time() . '.' . $request->picture->getClientOriginalName();
+            $foodblog->picture = $filename;
+        }
+        $foodblog->blogName =  $request->blogName;
+        $foodblog->addDate = $request->addDate;
+        $foodblog->addBy ="kiki";
+        $foodblog->description = $request->description;
+        
+      
+        $foodblog->save();
+      
+      if (!empty($request->picture)) {
+        $fileName = $image->getClientOriginalName();
+        $image->move('uploads/picture', $fileName);
+        $foodblog->picture = $fileName;
+      }
         $foodblog->save();
         return response()->json($foodblog);
 
-        // $validation = Validator::make($request->all(), [
-        //     'picture' => 'required|image|mines:jpeg,png,jpg,gif|max:2048'
-        // ]);
-        // if ($validation->passes()) {
-            
-
-        // }
-
-        
     }
     public function delete (Request $request) {
         $id = $request->id;
