@@ -20,6 +20,7 @@ class FoodBlogController extends Controller
     public function store(Request $request)
     {
         $foodblog = new FoodBlog;
+        
 
         $validator = Validator::make($request->all(), [
         'blogName' => 'required',
@@ -36,9 +37,10 @@ class FoodBlogController extends Controller
         $foodblog->addDate = $request->addDate;
         $foodblog->addBy ="kiki";
         $foodblog->description = $request->description;
-        
+    
       
         $foodblog->save();
+
       
       if (!empty($request->picture)) {
         $fileName = $image->getClientOriginalName();
@@ -47,6 +49,7 @@ class FoodBlogController extends Controller
       }
         return response()->json($foodblog);
 
+  
     }
     public function delete (Request $request) {
         $id = $request->id;

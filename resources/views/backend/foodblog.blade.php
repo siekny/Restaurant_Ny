@@ -11,6 +11,7 @@
 
 	<div class="tab-content">
 		<div id="home" class="tab-pane fade in active">
+			
 			<form class="form-horizontal" id="formAdd" enctype="multipart/form-data">
 				<fieldset>
 					<div class="form-group">
@@ -22,6 +23,7 @@
 					<div class="form-group">
 					  	<label class="col-md-4 control-label">BLOG NAME</label>
 					  	<div class="col-md-6">
+					    	
 					    	<input id="blogName" placeholder="Blog Name" name="blogName" class="form-control input-md" required="" type="text">
 					  	</div>
 					</div>
@@ -30,6 +32,7 @@
 					<div class="form-group">
 					  	<label class="col-md-4 control-label">ADD DATE</label>  
 					  	<div class="col-md-6">
+					  		
 					  		<input id="addDate" name="addDate" placeholder="ADD DATE" class="form-control input-md" required="" type="text" onfocus="(this.type='date')" onchange="(this.type='text')">
 					  	</div>
 					</div>
@@ -38,6 +41,7 @@
 					<div class="form-group">
 			  			<label class="col-md-4 control-label">ADD BY</label>  
 			  			<div class="col-md-6">
+			  				
 			  				<input id="addBy" name="addBy" placeholder="ADD BY" class="form-control input-md" required="" type="text">
 			    
 			  			</div>
@@ -47,6 +51,7 @@
 					<div class="form-group">
 			  			<label class="col-md-4 control-label">DESCRIPTION</label>  
 			  			<div class="col-md-6">
+			  				
 			  				<textarea id="description" name="description" class="form-control input-md" placeholder="Description" required="" rows="5" style="resize: none;"></textarea>
 			  				
 			  			</div>
@@ -77,6 +82,7 @@
 		        	<?php $i=1; ?>
 		        	@foreach($foodblogs as $foodblog)
 		        	
+		        	
 		            <tr id="{{ $foodblog->id }}">
 		            	<td>{{ $i++ }}</td>
 		                <td>{{ $foodblog->blogName }}</td>
@@ -84,6 +90,7 @@
 		                <td>{{ $foodblog->addBy }}</td>
 		                <td>{{ $foodblog->description }}</td>
 		                <td>
+		                	
 		                	<a class="btn btn-success btn-sm edit" data-id="{{ $foodblog->id }}" title="{{ $foodblog->id }}"><span class="glyphicon glyphicon-edit"></span></a>
 		                	<a class="btn btn-danger btn-sm delete" data-id="{{ $foodblog->id }}" title="{{ $foodblog->id }}"><span class="glyphicon glyphicon-trash"></span></a>
 		                </td>
@@ -191,23 +198,18 @@
 		// add script
 		$('#btnSubmit').on('click', function(e) {
 			e.preventDefault();
-			var picture = $('#picture').val();
-			var blogName = $('#blogName').val();
-			var addDate = $('#addDate').val();
-			var addBy = $('#addBy').val();
-			var description = $('#description').val();
+			// var picture = $('#picture').val();
+			// var blogName = $('#blogName').val();
+			// var addDate = $('#addDate').val();
+			// var addBy = $('#addBy').val();
+			// var description = $('#description').val();
+		
 			console.log(picture)
 
 			$.ajax({
 				type: 'get',
-				url: '{{route("foodblogAdd")}}',
-				data: {
-					picture : picture,
-					blogName : blogName,
-					addDate : addDate,
-					addBy : addBy,
-					description : description
-				},
+				url: '{{route("foodblogAdd")}' ,
+				data : new FormData(this),
 		        dataType:'JSON',
 		        contentType: false,
 		        cache: false,
@@ -215,6 +217,7 @@
 				
 				success: function(data) {
 					console.log(data)
+	
 					swal({
 			            text: "The data have been added",
 			            icon: "success",
@@ -247,6 +250,7 @@
         		data: {id : id},
         		success: function (data) {
         			$('#delete').modal('hide');
+        			
         			$('tr#'+id).remove();
         			
         			swal("", "Delete Successfully !", "success")
