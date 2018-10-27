@@ -42,11 +42,11 @@ class FoodBlogController extends Controller
         $foodblog->save();
 
       
-      if (!empty($request->picture)) {
-        $fileName = $image->getClientOriginalName();
-        $image->move('uploads/picture', $fileName);
-        $foodblog->picture = $fileName;
-      }
+        if (!empty($request->picture)) {
+            $fileName = $image->getClientOriginalName();
+            $image->move('uploads/picture', $fileName);
+            $foodblog->picture = $fileName;
+        }
         return response()->json($foodblog);
 
   

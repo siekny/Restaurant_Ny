@@ -12,7 +12,7 @@
 	<div class="tab-content">
 		<div id="home" class="tab-pane fade in active">
 			
-			<form class="form-horizontal" id="formAdd" enctype="multipart/form-data">
+			<form class="form-horizontal" id="formAdd" method="POST" enctype="multipart/form-data">
 				<fieldset>
 					<div class="form-group">
 					  	<label class="col-md-4 control-label">PICTURE</label>
@@ -83,7 +83,7 @@
 		        	@foreach($foodblogs as $foodblog)
 		        	
 		        	
-		            <tr id="{{ $foodblog->id }}">
+		            <tr id="{{ $foodblog->id }}" class="trID" data-id="{{ $foodblog->id }}">
 		            	<td>{{ $i++ }}</td>
 		                <td>{{ $foodblog->blogName }}</td>
 		                <td>{{ date('d-M-Y', strtotime($foodblog->addDate)) }}</td>
@@ -129,6 +129,25 @@
     </div>
 </div>
 <!-- end pop up of deleting -->
+
+<!-- pop up of change color -->
+<div class="modal fade" tabindex="-1" id="table_tr_id" data-keyboard="false" data-backdrop="static">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+            	<h4>Deleting</h4>
+                <button type="button" class="close" data-dismiss="modal">×</button>
+            </div>
+            <div class="modal-body">
+                <div class="center">
+                	<input type="text" id="id_tr" class="form-control" name="">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end pop up of change color -->
 
 <!-- pop up of editing -->
 <div class="modal fade" tabindex="-1" id="edit" data-keyboard="false" data-backdrop="static">
@@ -196,19 +215,12 @@
     });
 	$(document).ready(function () {
 		// add script
-		$('#btnSubmit').on('click', function(e) {
+		$('#btnSubmit').on('submit', function(e) {
 			e.preventDefault();
-			// var picture = $('#picture').val();
-			// var blogName = $('#blogName').val();
-			// var addDate = $('#addDate').val();
-			// var addBy = $('#addBy').val();
-			// var description = $('#description').val();
 		
-			console.log(picture)
-
 			$.ajax({
-				type: 'get',
-				url: '{{route("foodblogAdd")}' ,
+				method: 'POST',
+				url: '{{route("foodblogAdd")}}',
 				data : new FormData(this),
 		        dataType:'JSON',
 		        contentType: false,
@@ -217,7 +229,6 @@
 				
 				success: function(data) {
 					console.log(data)
-	
 					swal({
 			            text: "The data have been added",
 			            icon: "success",
@@ -264,6 +275,35 @@
             $('#edit').modal('show');
             $('#id_edit').val($(this).attr('data-id'));
         });
+
+       
+        $(".trID").on("click", function() {
+        	$('#table_tr_id').modal('hide');
+            $('#id_tr').val($(this).attr('data-id'));
+            var getId = $("#id_tr").val();
+            console.log(getId)
+            // $("#"+getId).click(function() {
+            // 	console.log("gtyu")
+            // })
+
+            var el = document.getElementById(getId);
+
+			el.addEventListener('click', function() {
+				console.log(this)
+			  	if(this.style.backgroundColor === 'blue') {
+			    	//this.style.backgroundColor = 'none !important';
+			    	$(this).attr( 'style', 'color: black' );
+			    	//$(this).attr( 'style', 'background-color: #f00 !important' );
+			  	}      
+			  	else {
+			    	// 	this.style.backgroundColor = 'blue !important';
+			    	$(this).attr( 'style', 'color: white' );
+			    	$(this).attr( 'style', 'background-color: blue' );
+			    	this.style.color = "white";
+			  	}      
+			});
+
+	    })
 	});
 </script>
 

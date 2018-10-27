@@ -24,5 +24,5 @@ Route::get('/admin.foodmenu', 'Admin\FoodMenuController@index')->name('adminfood
 Route::get('/admin.booktable', 'Admin\BookTableController@index')->name('adminbooktable');
 Route::get('/admin.foodblog', 'Admin\FoodBlogController@index')->name('adminfoodblog');
 
-Route::get('/admin.foodblog.add', 'Admin\FoodBlogController@store')->name('foodblogAdd');
+Route::post('/admin.foodblog.add', 'Admin\FoodBlogController@store')->name('foodblogAdd');
 Route::get('/admin.foodblog.delete', 'Admin\FoodBlogController@delete')->name('foodblogDelete');
