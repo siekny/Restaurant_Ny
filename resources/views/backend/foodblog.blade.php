@@ -291,7 +291,7 @@
 			el.addEventListener('click', function() {
 				console.log(this)
 			  	if(this.style.backgroundColor === 'blue') {
-			    	//this.style.backgroundColor = 'none !important';
+			    	
 			    	$(this).attr( 'style', 'color: black' );
 			    	//$(this).attr( 'style', 'background-color: #f00 !important' );
 			  	}      
