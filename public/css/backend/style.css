@@ -10,13 +10,17 @@
     font-weight: 600 !important;
 }
 .nav-tabs>li>a:hover {
-    border-color: #367fa9 #367fa9 #ecf0f5 !important;
+    border-bottom: 1px solid #367fa9  !important;
 }
 .nav>li>a:focus, .nav>li>a:hover {
     background-color: transparent !important;
 }
+
+.nav-tabs>li>a {
+    margin-right: 0 !important;
+}
 .content-header {
-	margin-top: 50px !important;
+    margin-top: 50px !important;
 }
 .content-header > h1 {
     margin-bottom: 20px !important;
@@ -46,4 +50,10 @@
 }
 .swal-text {
     font-size: 25px !important;
+}
+.custom-select {
+    padding: 0 10px !important;
+}
+.view {
+    color: #fff !important;
 }

@@ -34,10 +34,10 @@
 	    <!-- Header Navbar: style can be found in header.less -->
 	    <nav class="navbar navbar-static-top">
 	      	<!-- Sidebar toggle button-->
-	      	<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+	      	<a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button" style="position: absolute; left: 0">
 	        	<span class="sr-only">Toggle navigation</span>
 	      	</a>
-	      	<div class="navbar-custom-menu">
+	      	<div class="navbar-custom-menu" style="position: absolute; right: 0">
 	        	<ul class="nav navbar-nav">
 	          		<!-- User Account: style can be found in dropdown.less -->
 	          		<li class="dropdown user user-menu">
@@ -78,25 +78,25 @@
         		<li class="active">
           			<a href="{{ route('adminfoodmenu') }}">
             			<i class="fa fa-dashboard"></i> <span>Food Menu</span>
-            			<span class="pull-right-container">
+            			<!-- <span class="pull-right-container">
               				<i class="fa fa-angle-right pull-right"></i>
-            			</span>
+            			</span> -->
           			</a>
         		</li>
         		<li>
           			<a href="{{ route('adminbooktable') }}">
             			<i class="fa fa-table"></i> <span>Book Table</span>
-            			<span class="pull-right-container">
+            			<!-- <span class="pull-right-container">
               				<i class="fa fa-angle-right pull-right"></i>
-            			</span>
+            			</span> -->
           			</a>
         		</li>
         		<li>
           			<a href="{{ route('adminfoodblog') }}">
             			<i class="fa fa-dashboard"></i> <span>Food Blog</span>
-            			<span class="pull-right-container">
+            			<!-- <span class="pull-right-container">
               				<i class="fa fa-angle-right pull-right"></i>
-            			</span>
+            			</span> -->
           			</a>
         		</li>
       		</ul>

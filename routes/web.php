@@ -24,5 +24,9 @@ Route::get('/admin.foodmenu', 'Admin\FoodMenuController@index')->name('adminfood
 Route::get('/admin.booktable', 'Admin\BookTableController@index')->name('adminbooktable');
 Route::get('/admin.foodblog', 'Admin\FoodBlogController@index')->name('adminfoodblog');
 
-Route::post('/admin.foodblog.add', 'Admin\FoodBlogController@store')->name('foodblogAdd');
-Route::get('/admin.foodblog.delete', 'Admin\FoodBlogController@delete')->name('foodblogDelete');
+Route::get('/admin.foodblog.add', 'Admin\FoodBlogController@addview')->name('foodblog_Add');
+Route::POST('/admin.foodblog.add', 'Admin\FoodBlogController@store')->name('foodblogAdd');
+Route::get("/admin.foodblog.view/{id}", 'Admin\FoodBlogController@view')->name('foodblogview');
+Route::get("/admin.foodblog.edit/{id}", 'Admin\FoodBlogController@edit')->name('foodblogedit');
+Route::POST("/admin.foodblog.edit/{id}", 'Admin\FoodBlogController@update')->name('foodblogupdate');
+Route::POST('/admin.foodblog.delete/{id}', 'Admin\FoodBlogController@delete')->name('foodblogdelete');
