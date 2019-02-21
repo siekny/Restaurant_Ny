@@ -18,7 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 // Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/', 'HomePageController@index')->name('homepage');
+Route::get('/', 'front\HomeController@index')->name('homepage');
 Route::get('/admin', 'HomeController@index')->name('homeadmin');
 Route::get('/admin.foodmenu', 'Admin\FoodMenuController@index')->name('adminfoodmenu');
 Route::get('/admin.booktable', 'Admin\BookTableController@index')->name('adminbooktable');
@@ -37,3 +37,7 @@ Route::get("/admin.foodmenu.view/{id}", 'Admin\FoodMenuController@view')->name('
 Route::get("/admin.foodmenu.edit/{id}", 'Admin\FoodMenuController@edit')->name('foodmenuedit');
 Route::POST("/admin.foodmenu.edit/{id}", 'Admin\FoodMenuController@update')->name('foodmenuupdate');
 Route::POST('/admin.foodmenu.delete/{id}', 'Admin\FoodMenuController@delete')->name('foodmenudelete');
+
+// front
+Route::get('/allblog/{id}', 'front\AllBlogController@index')->name('allblog');
+

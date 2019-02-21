@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 07, 2019 at 05:55 AM
+-- Generation Time: Feb 21, 2019 at 06:12 AM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -21,34 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `laravel_restaurant`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `ajax_images`
---
-
-CREATE TABLE `ajax_images` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `ajax_images`
---
-
-INSERT INTO `ajax_images` (`id`, `title`, `image`, `created_at`, `updated_at`) VALUES
-(1, 'fafa', '1548898975.jpg', '2019-01-30 18:42:55', '2019-01-30 18:42:55'),
-(2, 'fafa', '1548899034.jpg', '2019-01-30 18:43:54', '2019-01-30 18:43:54'),
-(3, 'fafa', '1548899045.jpg', '2019-01-30 18:44:05', '2019-01-30 18:44:05'),
-(4, 'fafa', '1548899048.jpg', '2019-01-30 18:44:08', '2019-01-30 18:44:08'),
-(5, 'fafa', '1548899048.jpg', '2019-01-30 18:44:08', '2019-01-30 18:44:08'),
-(6, 'fafa', '1548899049.jpg', '2019-01-30 18:44:09', '2019-01-30 18:44:09'),
-(7, 'fafa', '1548899049.jpg', '2019-01-30 18:44:09', '2019-01-30 18:44:09'),
-(8, 'fafa', '1548899259.jpg', '2019-01-30 18:47:39', '2019-01-30 18:47:39');
 
 -- --------------------------------------------------------
 
@@ -72,20 +44,9 @@ CREATE TABLE `food_blogs` (
 --
 
 INSERT INTO `food_blogs` (`id`, `blogName`, `addDate`, `addBy`, `description`, `image`, `created_at`, `updated_at`) VALUES
-(62, 'Thai Food 11', NULL, 'Ny NY', 'Ny\'s always hungry!', '1549515252.2.jpg', '2019-02-05 20:18:57', '2019-02-06 21:54:12'),
-(64, 'Testing', '2019-02-22 00:00:00', 'Kdom', 'Kdom is very kach', '1549515000.1.jpg', '2019-02-05 20:30:01', '2019-02-06 21:50:00'),
-(65, 'Thai Food', NULL, 'Ny', NULL, '1549423937.2.jpg', '2019-02-05 20:32:17', '2019-02-05 20:32:17'),
-(66, 'Thai Food', NULL, 'Ny', NULL, '1549424223.1.png', '2019-02-05 20:37:03', '2019-02-05 20:37:03'),
-(69, 'Thai Food', NULL, 'Ny', NULL, '1549424601.1.jpg', '2019-02-05 20:43:21', '2019-02-05 20:43:21'),
-(70, 'Thai Food', NULL, 'Ny', NULL, '1549424630.1.jpg', '2019-02-05 20:43:50', '2019-02-05 20:43:50'),
-(71, 'Khmer Food', '2019-02-06 00:00:00', 'Na NY', 'I\'m really hungry now!', '1549424711.1.jpg', '2019-02-05 20:45:11', '2019-02-05 20:45:11'),
-(72, 'Thai Food', NULL, 'Ny', NULL, '1549512171.2.jpg', '2019-02-06 21:02:51', '2019-02-06 21:02:51'),
-(73, 'Thai Food', NULL, 'Ny', NULL, '1549512205.2.jpg', '2019-02-06 21:03:25', '2019-02-06 21:03:25'),
-(74, 'Nyny', '2019-02-25 00:00:00', 'Ny', 'erttpoiiuytrew', '', '2019-02-06 21:12:44', '2019-02-06 21:12:44'),
-(75, 'Nyny', '2019-02-27 00:00:00', 'NY NY', '455252twtq', '1549512811.1.png', '2019-02-06 21:13:31', '2019-02-06 21:13:31'),
-(77, 'Thai Food', NULL, 'NY NY', NULL, '1549515275.1.jpg', '2019-02-06 21:54:35', '2019-02-06 21:54:35'),
-(78, 'Thai Food', NULL, 'NY NY', NULL, '1549515309.1.jpg', '2019-02-06 21:55:09', '2019-02-06 21:55:09'),
-(79, 'Thai Food', NULL, 'Ny', NULL, '1549515325.1.png', '2019-02-06 21:55:25', '2019-02-06 21:55:25');
+(62, 'Thai Food', '2019-01-09 00:00:00', 'Ny NY', 'Thai cuisine is well known for its spiciness, with Som Tam (a spicy papaya salad) being a famous example. In fact, however, the secret to Thai food is a balance of five flavors: sour, sweet, salty, bitter, and spicy. ... For example, Tom Yum Goong, which is sour and spicy, is often paired with an omelet or rice', '', '2019-02-05 20:18:57', '2019-02-11 18:18:43'),
+(64, 'Khmer Food', '2019-02-10 00:00:00', 'Mey ney', 'Khmer food takes influences from a variety of countries. ... Common ingredients in Khmer cuisine are similar to those found in other Southeast Asian culinary traditions – rice and sticky rice, fish sauce, palm sugar, lime, garlic, chilies, coconut milk, lemon grass, galangal, kaffir lime and shallots.', '', '2019-02-05 20:30:01', '2019-02-11 18:16:09'),
+(65, 'Chinese Food', '2019-02-20 00:00:00', 'Ny', 'The spread of traditional Chinese food began with Cantonese style cooking from the south of China and this style includes many of the more instantly recognisable Chinese dishes such as stir-fries, sweet and sour and chop suey', '1550725383.the-greens-chinese-cuisine.jpg', '2019-02-20 22:03:03', '2019-02-20 22:03:03');
 
 -- --------------------------------------------------------
 
@@ -95,7 +56,7 @@ INSERT INTO `food_blogs` (`id`, `blogName`, `addDate`, `addBy`, `description`, `
 
 CREATE TABLE `food_menus` (
   `id` int(10) UNSIGNED NOT NULL,
-  `picture` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foodName` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` double(8,2) NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci,
@@ -103,6 +64,20 @@ CREATE TABLE `food_menus` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `food_menus`
+--
+
+INSERT INTO `food_menus` (`id`, `image`, `foodName`, `price`, `description`, `blog_id`, `created_at`, `updated_at`) VALUES
+(1, '1549599054.1.jpg', 'yummy', 12.30, 'Very yummy', 75, '2019-02-07 21:10:54', '2019-02-07 21:10:54'),
+(2, '1549934278.Fish-Amok-.jpg', 'Amok', 4.50, 'It\'s traditional Khmer Food', 64, '2019-02-11 18:17:58', '2019-02-11 18:17:58'),
+(3, '1549936213.lemonede.jpeg', 'Lemonade', 3.50, 'Bekal piknik yang Kami rekomendasikan ini sangat mudah dibuat dan bergizi, bisa menjadi referensi bekal piknikmu bersama keluarga', 62, '2019-02-11 18:50:13', '2019-02-11 18:50:13'),
+(4, '1549936889.foodtherapy6.jpg', 'Food Therapy', 10.98, 'emicu kedua: Makanan yang diproses adalah makanan hasil olahan pabrik.', 64, '2019-02-11 19:01:29', '2019-02-11 19:01:29'),
+(5, '1549936889.foodtherapy6.jpg', 'Food Therapy', 10.98, 'emicu kedua: Makanan yang diproses adalah makanan hasil olahan pabrik.', 64, '2019-02-11 19:01:29', '2019-02-11 19:01:29'),
+(6, '1549936889.foodtherapy6.jpg', 'Food Therapy', 10.98, 'emicu kedua: Makanan yang diproses adalah makanan hasil olahan pabrik.', 64, '2019-02-11 19:01:29', '2019-02-11 19:01:29'),
+(7, '1549934278.Fish-Amok-.jpg', 'Amok', 4.50, 'It\'s traditional Khmer Food', 64, '2019-02-11 18:17:58', '2019-02-11 18:17:58'),
+(8, '1549934278.Fish-Amok-.jpg', 'Amok', 4.50, 'It\'s traditional Khmer Food', 64, '2019-02-11 18:17:58', '2019-02-11 18:17:58');
 
 -- --------------------------------------------------------
 
@@ -194,12 +169,6 @@ INSERT INTO `users` (`id`, `name`, `email`, `password`, `remember_token`, `creat
 --
 
 --
--- Indexes for table `ajax_images`
---
-ALTER TABLE `ajax_images`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `food_blogs`
 --
 ALTER TABLE `food_blogs`
@@ -241,22 +210,16 @@ ALTER TABLE `users`
 --
 
 --
--- AUTO_INCREMENT for table `ajax_images`
---
-ALTER TABLE `ajax_images`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
 -- AUTO_INCREMENT for table `food_blogs`
 --
 ALTER TABLE `food_blogs`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=80;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=66;
 
 --
 -- AUTO_INCREMENT for table `food_menus`
 --
 ALTER TABLE `food_menus`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `migrations`

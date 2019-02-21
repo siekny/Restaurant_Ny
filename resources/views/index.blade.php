@@ -45,46 +45,17 @@
 		            
 		       
 		                <ul class="nav navbar-nav navbar-right">
-		                	<li><a href="http://localhost:8000/home">Home</a></li>
+		                	<li><a href="{{ route('homepage') }}">Home</a></li>
 		                    <li class="dropdown">
 		                    	<a href="http://localhost:8000/menu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Menu <span class="caret"></span></a>
 		                    	<ul class="dropdown-menu">
-	                    			<li><a href="http://localhost:8000/allmenu/1"> Khmer Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/3"> Thai Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/4"> Korean Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/5"> Japanese </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/6"> chinese food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/7"> test </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/8"> Testing </a></li>
-		                    					                    		
+		                    		@foreach($foodblogs as $foodblog)
+		                    		<li><a href="{{ route('allblog',$foodblog->id) }}">{{ $foodblog->blogName }}</a></li>
+	                    			
+		                    		@endforeach			                    		
 		                        </ul>
 		                    </li>
-		                    <li class="dropdown">
-		                    	<a href="http://localhost:8000/menu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our Blog <span class="caret"></span></a>
-		                    	<ul class="dropdown-menu">
-	                    			<li><a href="http://localhost:8000/allmenu/1"> Khmer Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/3"> Thai Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/4"> Korean Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/5"> Japanese </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/6"> chinese food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/7"> test </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/8"> Testing </a></li>
-		                    					                    		
-		                        </ul>
-		                    </li>
-		                    <li class="dropdown">
-		                    	<a href="http://localhost:8000/menu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Page <span class="caret"></span></a>
-		                    	<ul class="dropdown-menu">
-	                    			<li><a href="http://localhost:8000/allmenu/1"> Khmer Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/3"> Thai Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/4"> Korean Food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/5"> Japanese </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/6"> chinese food </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/7"> test </a></li>
-	                    			<li><a href="http://localhost:8000/allmenu/8"> Testing </a></li>
-		                    					                    		
-		                        </ul>
-		                    </li>
+		                    
 		                    <li><a href="http://localhost:8000/reservation">About</a></li>
 		                    <li><a href="http://localhost:8000/about">Contact</a></li>
 		                    
@@ -120,7 +91,7 @@
 							<p>It is a long established fact that a reader will be distracted by the readable content of a page. It is a long established fact that a reader will be distracted by the readable content of a page.</p>
 						</div>
 						<div class="col-md-12">
-							<div class="item col-sm-6 col-md-6 list-group-item">
+							<!-- <div class="item col-sm-6 col-md-6 list-group-item">
 							    <div class="thumbnail">
 							      	<img class="group list-group-image" src="{{URL::asset('/uploads/1.jpg')}}" alt="..." style="height: 40% !important">
 							      	<div class="caption">
@@ -134,8 +105,8 @@
 					                    </div>
 							      	</div>
 							    </div>
-							</div>
-							<div class="item col-sm-6 col-md-6 list-group-item">
+							</div> -->
+							<!-- <div class="item col-sm-6 col-md-6 list-group-item">
 							    <div class="thumbnail">
 							      	<img class="group list-group-image" src="{{URL::asset('/uploads/2.jpg')}}" alt="..." style="height: 40% !important">
 							      	<div class="caption">
@@ -149,23 +120,26 @@
 					                    </div>
 							      	</div>
 							    </div>
-							</div>
+							</div> -->
+
+							@foreach($foodmenus as $foodmenu)
 							<div class="item col-sm-6 col-md-6 list-group-item">
 							    <div class="thumbnail">
-							      	<img class="group list-group-image" src="{{URL::asset('/uploads/3.jpg')}}" alt="..." style="height: 40% !important">
+							      	<img class="group list-group-image" src="{{URL::asset('/uploads/picture/')}}/{{ $foodmenu->image }}" width="160" alt="..." style="height: auto !important; width: 160px !important;">
 							      	<div class="caption">
-							        	<h4 class="group inner list-group-item-heading">Blog Title Here</h4>
-							        	<span>May 20th / By Admin</span>
-							        	<p class="group inner list-group-item-text">At vero eos et accusamus et iusto odio dignissimos ducimus </p>
+							        	<h4 class="group inner list-group-item-heading">{{ $foodmenu->foodName}}</h4>
+							        	<span>{{$foodmenu->created_at}}</span>
+							        	<p class="group inner list-group-item-text">{{$foodmenu->description}}</p>
 							        	<div class="row">
 					                        <div class="col-xs-12 col-md-6 menu-price">
-					                            <p class="lead">$21.000</p>
+					                            <p class="lead">${{$foodmenu->price}}</p>
 					                        </div>
 					                    </div>
 							      	</div>
 							    </div>
 							</div>
-							<div class="item col-sm-6 col-md-6 list-group-item">
+							@endforeach
+							<!-- <div class="item col-sm-6 col-md-6 list-group-item">
 							    <div class="thumbnail">
 							      	<img class="group list-group-image" src="{{URL::asset('/uploads/1.jpg')}}" alt="..." style="height: 40% !important">
 							      	<div class="caption">
@@ -179,7 +153,7 @@
 					                    </div>
 							      	</div>
 							    </div>
-							</div>
+							</div> -->
 						</div>
 						
 					</div>
@@ -239,39 +213,20 @@
 							<p>It is a long established fact that a reader will be distracted by the readable content of a page. It is a long established fact that a reader will be distracted by the readable content of a page.</p>
 						</div>
 						<div class="col-md-12">
+							@foreach($foodblogs as $foodblog)
 							<div class="col-sm-6 col-md-4">
 							    <div class="thumbnail">
-							      	<img src="{{URL::asset('/uploads/1.jpg')}}" alt="...">
+							      	<img src="{{URL::asset('/uploads/picture/')}}/{{ $foodblog->image }}" alt="...">
 							      	<div class="caption">
-							        	<h4>Blog Title Here</h4>
-							        	<span>May 20th 2018 / By Admin/ 3 comments</span>
-							        	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-							        	<a href="https://www.google.com/" target="_blank" class="btn-readmore" role="button">Read More >></a>
+							        	<h4>{{ $foodblog->blogName }}</h4>
+							        	<span>{{ date('Y-m-d', strtotime($foodblog->addDate)) }} / By {{ $foodblog->addBy }}</span>
+							        	<p>{{ $foodblog->description }}</p>
+							        	<a href="{{ route('allblog',$foodblog->id) }}" target="_blank" class="btn-readmore" role="button">Read More >></a>
 							      	</div>
 							    </div>
 							</div>
-							<div class="col-sm-6 col-md-4">
-							    <div class="thumbnail">
-							      	<img src="{{URL::asset('/uploads/2.jpg')}}" alt="...">
-							      	<div class="caption">
-							        	<h4>Blog Title Here</h4>
-							        	<span>May 20th 2018 / By Admin/ 3 comments</span>
-							        	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p>
-							        	<a href="https://www.google.com/" target="_blank" class="btn-readmore" role="button">Read More >></a>
-							      	</div>
-							    </div>
-							</div>
-							<div class="col-sm-6 col-md-4">
-							    <div class="thumbnail">
-							      	<img src="{{URL::asset('/uploads/3.jpg')}}" alt="...">
-							      	<div class="caption">
-							        	<h4>Blog Title Here</h4>
-							        	<span>May 20th 2018 / By Admin/ 3 comments</span>
-							        	<p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga.</p> 
-							        	<a href="https://www.google.com/" target="_blank" class="btn-readmore" role="button">Read More >></a>
-							      	</div>
-							    </div>
-							</div>
+							@endforeach
+							
 						</div>
 						
 					</div>

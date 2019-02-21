@@ -8,6 +8,28 @@
     </script>
 @endif 
 
+<!-- <?php 
+	$date1 = "2016-02-28";
+	$date2 = "2016-03-1";
+
+	$diff = abs(strtotime($date2) - strtotime($date1));
+
+	$years = floor($diff / (365*60*60*24));
+	$months = floor(($diff - $years * 365*60*60*24) / (30*60*60*24));
+	$days = floor(($diff - $years * 365*60*60*24 - $months*30*60*60*24)/ (60*60*24));
+
+	$totalDays = $years*365 + $months*30 + $days;
+	printf("%d years, %d months, %d days\n", $years, $months, $days);
+
+
+	$datetime1 = strtotime('May 3, 2012 10:38:22 GMT');
+$datetime2 = strtotime('06 Apr 2012 07:22:21 GMT');
+
+$secs = $datetime2 - $datetime1;// == <seconds between the two times>
+$days = $secs / 86400;
+echo $days;
+?> -->
+
 <ul class="nav nav-tabs">
 	<li><a href="{{ route('foodblog_Add') }}">Add New</a></li>
 	<li class="active"><a href="{{ route('adminfoodblog') }}">Show Food Blog</a></li>

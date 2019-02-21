@@ -1,5 +1,5 @@
 @extends('backend.index')
-@section('title', 'Food Blog')
+@section('title', 'Food Menu')
 @section('content')
 
 
